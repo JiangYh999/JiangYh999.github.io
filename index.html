@@ -542,6 +542,16 @@ Quick
     
 
     
+      document.addEventListener('copy', function (event) {
+      const clipboardData = event.clipboardData || window.clipboardData;
+      if (!clipboardData) { return; }
+      const text = window.getSelection().toString();
+      if (text) {
+        event.preventDefault();
+        clipboardData.setData('text/plain', text + '');
+      }
+    });
+    
   /* 小彩蛋: 饮茶先啦 */
   setTimeout(() => {
     var time = new Date();
